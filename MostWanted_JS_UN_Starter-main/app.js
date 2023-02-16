@@ -195,13 +195,49 @@ function chars(input) {
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
 // function displayPerson ()
 
-function findPersonFamily(person) {
-    function buildFamilyTree (){
+// function findParents(personData, people) {
+//     let personParents= people.filter(function(person) {
+//         if (personData.parents.includes(personData.id))
+//         return true
+//     })
+//     return personParents
+//     }
+
+function findSiblings(person, people) {
+    let personSiblings= people.filter(function(el){
+        if (person.parents.includes(parents))
+        return true
+    })
+    return personSiblings
+}
+
+function findPersonSpouse(person, people){
+    let personSpouse = people.filter(function(el){
+        if (person.currentSpouse === el.id) {
+            return true
+        }
+    })
+    return personSpouse;
+    }
 
 
+
+
+// function findSpouse(personData, people) {
+//     let personSpouse= people.filter(function(person){
+//         if (personData.currentSpouse.includes(person))
+//         return true
+//     })
+//     return personSiblings
+// }
+
+function findPersonFamily(person,people) {
+    let personFamily= ""
+    let spouseObj = findPersonSpouse(person, people);
+//     findSiblings();
+//     findParents();
+
+    personFamily+= `Spouse: ${spouseObj.firstName} ${spouseObj.lastName}\n`
     
-    let personFamily = `Parents: ${person.parent}\n`;
-    personFamily += `Current Spouse: ${person.currentSpouse}\n`;
-
-    return personFamily;
+    return personFamily
 }
