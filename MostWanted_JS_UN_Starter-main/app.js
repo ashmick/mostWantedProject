@@ -240,16 +240,23 @@ function findPersonFamily(person,people) {
     debugger;
     let personFamily= "";
     let spouseArr = findPersonSpouse(person, people);
+    if (spouseArr.forEach(function (personSpouse){
+        personFamily+= `Spouse: ${spouseArr[0].firstName} ${spouseArr[0].lastName}\n`;
+    }));
+
     let parentsArr = findParents(person,people);
+    if (parentsArr.forEach(function(parent){
+        personFamily+= `Parents: ${parentsArr[0].firstName} ${parentsArr[0].lastName}\n`;
+    }));
+
     let siblingArr  = findSiblings(person,people);
+    if (siblingArr[0]) {
+        siblingArr.forEach(function (sibling){
+            personFamily+= `Sibling: ${siblingArr[0].firstName} ${siblingArr[0].lastName}\n`;
 
+        });
+        return personFamily
 
-//     findSiblings();
-//     findParents();
-
-    personFamily+= `Spouse: ${spouseArr[0].firstName} ${spouseArr[0].lastName}\n`;
-    personFamily+= `Parents: ${parentsArr[0].firstName} ${parentsArr[0].lastName}\n`;
-    personFamily+= `Sibling: ${siblingArr[0].firstName} ${siblingArr[0].lastName}\n`;
-    
-    return personFamily
+    }
 }
+
